@@ -1,0 +1,9 @@
+name: PR Title
+on: pull_request
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Echo the escaped PR title
+        run: |
+          echo '${{ fromJSON( toJSON( github.event.pull_request.title ) ) }}'
