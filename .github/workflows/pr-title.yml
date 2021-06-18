@@ -6,7 +6,7 @@ jobs:
     steps:
       - name: Echo the escaped PR title
         run: |
-          echo "${{ fromJSON( toJSON( github.event.pull_request.title ) ) }}" > file.md
+          echo "${{ fromJSON( toJSON( github.event.pull_request.title ) ) }}" | sed "s/'/\'/" > file.md
       - name: Upload file.md        
         uses: actions/upload-artifact@v2
         with:
