@@ -5,5 +5,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Echo the escaped PR title
+        uses: actions/upload-artifact@v2
+        with:
+          name: file
+          path: file.md
         run: |
           echo '${{ fromJSON( toJSON( github.event.pull_request.title ) ) }}' > file.md
